@@ -1,0 +1,364 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+:root {
+  --site-bg: #ffffff;
+  --text-color: #111111;
+  --primary-btn-bg: rgba(10, 10, 10, 0.9);
+  --primary-btn-text: #ffffff;
+}
+
+svg {
+  fill: var(--primary-btn-text);
+  /* width: 15px;
+  height: 15px; */
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+    font-family: 'fonts';
+    src: url('./fonts/pxiByp8kv8JHgFVrLGT9Z1xlFd2JQEk.woff2');
+}
+
+@font-face {
+    font-family: 'font-1';
+    src: url('./fonts/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2')
+}
+
+@font-face {
+    font-family: 'font-2';
+    src: url('./fonts/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk.woff2')
+}
+@font-face {
+    font-family: 'font-3';
+    src: url('./fonts/pxiByp8kv8JHgFVrLGT9Z1JlFd2JQEl8qw.woff2')
+}
+
+@font-face {
+  font-family: "font";
+  src: url("./fonts/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBHMdazQ.woff2");
+}
+
+body {
+  background-color: var(--site-bg);
+  color: var(--text-color);
+  font-size: 12px;
+  line-height: 1rem;
+  letter-spacing: 0px;
+  font-family: "font";
+  text-transform: none;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+.full-container {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.79, 0.14, 0.15, 0.86);
+}
+
+.header-container {
+  position: sticky;
+  width: 100%;
+  background: var(--primary-btn-bg);
+}
+
+.nav-buttons {
+  width: 100%;
+  padding-inline: 15px;
+  margin: 0 auto;
+  /* max-width: 748px; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin: 4px 0;
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-block: 10px;
+}
+
+.mechkeys-logo {
+  width: 120px;
+  height: auto;
+}
+
+.right-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 4px 0;
+  position: relative;
+  /* padding-right: 15px; */
+  padding-left: 15px;
+}
+
+.menu-mob-btn {
+  margin-left: 15px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-btn-bg);
+  color: var(--primary-btn-text);
+  border-color: currentColor;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.icon-bar {
+  background-color: currentColor;
+  position: relative;
+  display: block;
+  width: 15px;
+  height: 2px;
+}
+
+.icon-bar:nth-child(2) {
+  margin: 3px 0;
+}
+
+.cart-count {
+  background: #f4f5f7;
+  color: #111111;
+  position: absolute;
+  font-size: 0.6rem;
+  padding: 2px;
+  bottom: 0px;
+  right: -9px;
+  font-weight: 800;
+  line-height: 1;
+  border-radius: 3px;
+  font-family: "font";
+  align-self: center;
+}
+
+.search-icon {
+  padding: 3px;
+  position: relative;
+  top: 2px;
+}
+
+.right-icon {
+  padding: 3px;
+  position: relative;
+  top: 2px;
+}
+
+.account-icon {
+  padding: 3px;
+  position: relative;
+  top: 2px;
+}
+
+.laptop-nav-bar {
+  display: none;
+}
+
+.main-container {
+  width: 100%;
+  padding-inline: 15px;
+  margin: 0 auto;
+  /* max-width: 748px; */
+  margin-bottom: 30px;
+  margin-top: 30px;
+  flex-grow: 1;
+}
+
+.result-container {
+  margin-bottom: 20px;
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.body-nav-container {
+  color: var(--text-color);
+  font-size: 14px;
+  white-space: nowrap;
+  scrollbar-width: none;
+  overflow-x: scroll;
+  margin: 0 0 1em;
+  padding: 0;
+}
+
+.body-nav-container .home-text{
+  font-family: 'font-1';
+}
+
+
+
+.click-search-bar{
+  height: 88px;
+  top: 0;
+  position: fixed;
+  padding: 10px;
+  z-index: 100;
+  background-color: var(--site-bg);
+  box-shadow: rgba(149, 157, 165, .2) 0 8px 24px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.search-form{
+  display: flex;
+  max-width: 100%;
+  line-height: 1;
+  position: relative;
+  justify-content: end;
+}
+
+.search-input{
+  text-overflow: ellipsis;
+  height: 40px;
+  flex-grow: 1;
+  width: calc(100% - 45px);
+  max-width: 100%;
+  border-style: solid;
+  border-color: #dddddd;
+  border-radius: 2px 3px;
+  padding: 10px 12px;
+  font-family: 'font-1';
+  font-size: 14px;
+
+}
+
+.search-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 45px;
+  border: 2px solid #dddddd;
+  border-left: 0;
+  height: 40px;
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: var(--site-bg);
+  position: absolute;
+}
+
+.close-btn{
+  display: flex;
+  align-items: center;
+  border: 0;
+  background: 0;
+  background-color: var(--site-bg);
+  padding: 0px 20px;
+}
+
+@media (min-width: 768px) {
+  .cart-container {
+    padding: 0 10px;
+    position: relative;
+    left: 3px;
+  }
+  .search-icon {
+    left: 5px;
+  }
+  .account-icon {
+    left: 4px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav-buttons {
+    display: none;
+  }
+
+  .laptop-nav-bar {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-inline: 15px;
+    width: 1170px;
+    margin: 0 auto;
+  }
+
+  .laptop-logo-container {
+    display: flex;
+    align-items: center;
+    margin: 4px 0;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-block: 10px;
+  }
+  .mechkeys-logo-laptop {
+    width: 120px;
+    height: auto;
+  }
+
+  .right-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .laptop-nav-btns {
+    margin: 8px 0;
+    position: relative;
+    padding-inline: 15px;
+  }
+  .nav-ul {
+    text-transform: uppercase;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -10px;
+    list-style: none;
+  }
+
+  .menu-item {
+    display: flex;
+    position: relative;
+    margin: 0 10px;
+    align-items: center;
+    padding: 0px 4px;
+    font-size: 14px;
+    font-weight: 500;
+    min-height: 25px;
+    color: var(--primary-btn-text);
+  }
+
+  .sub-menu-icon {
+    width: 7px;
+    height: 7px;
+    margin-left: 5px;
+  }
+
+  .search-icon {
+    margin-bottom: 2.5px;
+    padding: 0 5px;
+    margin-right: 2px;
+  }
+
+  .account-icon {
+    padding-right: 8px;
+    padding-left: 4px;
+  }
+}
