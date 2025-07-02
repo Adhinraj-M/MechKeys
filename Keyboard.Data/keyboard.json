@@ -1,0 +1,106 @@
+[
+  {
+    "id": 1,
+    "name": "HELLOGANSS HS75T Mechanical Keyboard (AA Battery)",
+    "price_usd": 75.99,
+    "rating": "★★★★☆",
+    "rating_value": 4.0,
+    "image": "https://mks.blr1.cdn.digitaloceanspaces.com/uploads/2025/04/ATTACK-SHARK-K85-BLUE-0099-300x200.webp"
+  },
+  {
+    "id": 2,
+    "name": "FEKER Alice75 Aluminium Alloy Hot Swap Mechanical Keyboard",
+    "price_usd": 109.99,
+    "rating": "★★★★☆",
+    "rating_value": 4.5,
+    "image": "https://mks.blr1.cdn.digitaloceanspaces.com/uploads/2024/09/Product-image-removebg-preview-300x200.png"
+  },
+  {
+    "id": 3,
+    "name": "Keydous NJ98 Hot‑Swappable Display Screen with Knob",
+    "price_usd": 139.99,
+    "rating": "★★★★★",
+    "rating_value": 5.0,
+    "image": "https://mks.blr1.cdn.digitaloceanspaces.com/uploads/2024/02/RKH81-1-300x200.webp"
+  },
+  {
+    "id": 4,
+    "name": "CoolKiller CK75 Transparent Three‑Mode Mechanical Keyboard",
+    "price_usd": 0,
+    "rating": "★★★★☆",
+    "rating_value": 3.5,
+    "image": "https://mks.blr1.cdn.digitaloceanspaces.com/uploads/2023/11/2-300x200.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Mechkeys Mystery Box Mechanical Keyboard",
+    "price_usd": 50.99,
+    "rating": "★★★☆☆",
+    "rating_value": 3.0,
+    "image": "https://mks.blr1.cdn.digitaloceanspaces.com/uploads/2024/11/e6ab67a26f7cfefa36431084e13872fe-red-300x200.webp"
+  },
+  {
+    "id": 6,
+    "name": "MONSGEEK M1 Aluminium Gasket Mechanical Keyboard",
+    "price_usd": 129.99,
+    "rating": "★★★★☆",
+    "rating_value": 4.0,
+    "image": "https://mks.blr1.cdn.digitaloceanspaces.com/uploads/2023/02/rkgaming_RK100B_3-300x200.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Keydous NJ68 Three‑Mode Mechanical Keyboard",
+    "price_usd": 99.99,
+    "rating": "★★★★☆",
+    "rating_value": 4.5,
+    "image": "https://mks.blr1.cdn.digitaloceanspaces.com/uploads/2025/03/MC-G75-PRO11-300x200.webp"
+  },
+  {
+    "id": 8,
+    "name": "VARMILO Muse65 Magnetic Switch Keyboard",
+    "price_usd": 159.99,
+    "rating": "★★★★★",
+    "rating_value": 5.0,
+    "image": "https://mks.blr1.cdn.digitaloceanspaces.com/uploads/2024/07/RKR65-Phantom-1-300x200.webp"
+  },
+  {
+    "id": 9,
+    "name": "AJAZZ AC067 Cheese‑Theme Gasket RGB Keyboard",
+    "price_usd": 109.99,
+    "rating": "★★★★☆",
+    "rating_value": 4.0,
+    "image": "https://mks.blr1.cdn.digitaloceanspaces.com/uploads/2025/06/Aula-F75-MAX-Black-Side-Printed-00_-300x200.webp"
+  },
+  {
+    "id": 10,
+    "name": "LRMINI98 Pro Star Sand Hot‑Swappable Keyboard",
+    "price_usd": 196.99,
+    "rating": "★★★★☆",
+    "rating_value": 4.5,
+    "image":"https://mks.blr1.cdn.digitaloceanspaces.com/uploads/2024/11/d04982eedf20a162b81b29dba33d9896-orage-300x200.webp"
+  },
+  {
+    "id": 11,
+    "name": "SIKAKEYB Castle HM66 Magnetic Keyboard",
+    "price_usd": 230.99,
+    "rating": "★★★★★",
+    "rating_value": 5.0,
+    "image":"https://mks.blr1.cdn.digitaloceanspaces.com/uploads/2024/08/RK-M87-RD-9-300x200.webp"
+  },
+  {
+    "id": 12,
+    "name": "IQUNIX F97 Wintertide Edition",
+    "price_usd": 245.0,
+    "rating": "★★★★☆",
+    "rating_value": 4.0,
+    "image":"https://mks.blr1.cdn.digitaloceanspaces.com/uploads/2024/11/Aula-f87-pro-white-green-7-300x200.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Mechkeys G87 Mechanical Keyboard",
+    "price_usd": 89.99,
+    "rating": "★★★★☆",
+    "rating_value": 3.5,
+    "image": "https://mks.blr1.cdn.digitaloceanspaces.com/uploads/2023/02/2021818-9359-1-300x200.webp"
+  }
+]

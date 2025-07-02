@@ -8,10 +8,81 @@
   </head>
   <body>
     <div class="full-container">
+      <!-- menu-bar-mob  -->
+
+      <div class="side-menu-container none">
+        <div class="close-side-panel">
+          <button class="side-close-btn" onclick="closeSideBar()">
+            <svg
+              style="fill: #111111; opacity: 0.9"
+              width="25"
+              height="25"
+              viewBox="0 0 20 20"
+              fill="#555555"
+            >
+              <path
+                d="M14.95 6.46L11.41 10l3.54 3.54l-1.41 1.41L10 11.42l-3.53 3.53l-1.42-1.42L8.58 10L5.05 6.47l1.42-1.42L10 8.58l3.54-3.53z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div class="menu-sidebar-inner-container">
+          <ul class="menu-links">
+            <li class="menu-text">dealzone</li>
+            <li class="menu-text">pre-order</li>
+            <li class="menu-text">
+              keyboard
+              <button class="menu-list">
+                <svg
+                  class="sub-menu-icon"
+                  aria-hidden="true"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="7"
+                  height="7"
+                  viewBox="0 0 15 15"
+                  style="transform: rotate(180deg)"
+                >
+                  <rect width="15" height="15" fill="none"></rect>
+                  <path
+                    fill="currentColor"
+                    d="M14,12a1,1,0,0,1-.73-.32L7.5,5.47,1.76,11.65a1,1,0,0,1-1.4,0A1,1,0,0,1,.3,10.3l6.47-7a1,1,0,0,1,1.46,0l6.47,7a1,1,0,0,1-.06,1.4A1,1,0,0,1,14,12Z"
+                  ></path>
+                </svg>
+              </button>
+            </li>
+            <li class="menu-text">mouse</li>
+            <li class="menu-text">deskmat</li>
+            <li class="menu-text">
+              accessories
+              <button class="menu-list">
+                <svg
+                  class="sub-menu-icon"
+                  aria-hidden="true"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="7"
+                  height="7"
+                  viewBox="0 0 15 15"
+                  style="transform: rotate(180deg)"
+                >
+                  <rect width="15" height="15" fill="none"></rect>
+                  <path
+                    fill="currentColor"
+                    d="M14,12a1,1,0,0,1-.73-.32L7.5,5.47,1.76,11.65a1,1,0,0,1-1.4,0A1,1,0,0,1,.3,10.3l6.47-7a1,1,0,0,1,1.46,0l6.47,7a1,1,0,0,1-.06,1.4A1,1,0,0,1,14,12Z"
+                  ></path>
+                </svg>
+              </button>
+            </li>
+            <li class="menu-text">contact</li>
+          </ul>
+        </div>
+      </div>
+
       <!-- header section  -->
       <header class="header-container">
         <!-- laptop screen  -->
-        <nav class="laptop-nav-bar" >
+        <nav class="laptop-nav-bar">
           <div class="laptop-logo-container">
             <img
               class="mechkeys-logo-laptop"
@@ -70,7 +141,11 @@
               </ul>
             </div>
             <div class="right-container">
-              <div class="search-icon">
+              <div
+                class="search-icon"
+                id="search-modal"
+                onclick="openSearchModal()"
+              >
                 <svg
                   width="15"
                   height="15"
@@ -97,8 +172,8 @@
               <div class="cart-container">
                 <div class="right-icon">
                   <svg
-                    width="18"
-                    height="18"
+                    width="15"
+                    height="15"
                     viewBox="0 0 1792 1792"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -112,7 +187,29 @@
             </div>
           </div>
         </nav>
-        <nav class="nav-buttons" >
+
+        <form class="search-form-lap">
+          <input
+            class="search-input-lap"
+            type="search"
+            placeholder="Search for..."
+          />
+          <button class="search-btn-lap" onclick="closeSideBar()">
+            <svg
+              style="fill: #111111; opacity: 0.5"
+              width="14"
+              height="14"
+              viewBox="0 0 1792 1792"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1216 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"
+              ></path>
+            </svg>
+          </button>
+        </form>
+
+        <nav class="nav-buttons">
           <div class="logo-container">
             <img
               class="mechkeys-logo"
@@ -123,7 +220,7 @@
             />
           </div>
           <div class="right-container">
-            <div class="search-icon" id="search-icon"  >
+            <div class="search-icon" id="search-icon">
               <svg
                 width="15"
                 height="15"
@@ -150,8 +247,8 @@
             <div class="cart-container">
               <div class="right-icon">
                 <svg
-                  width="18"
-                  height="18"
+                  width="15"
+                  height="15"
                   viewBox="0 0 1792 1792"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -162,7 +259,7 @@
                 <span class="cart-count">0</span>
               </div>
             </div>
-            <button class="menu-mob-btn">
+            <button class="menu-mob-btn" onclick="opneSideMenu()">
               <span class="bars">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -171,35 +268,52 @@
             </button>
           </div>
         </nav>
-        <!-- search-bar  -->
-
-        <div class="click-search-bar ">
-          <form class="search-form">
-            <input class="search-input" type="text" placeholder="Search for...">
-            <button class="search-btn">
-              <svg style="fill: #111111;opacity: 0.5;" width="14" height="14" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1216 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"></path></svg>
-            </button>
-          </form>
-          <button class="close-btn">
-            <svg style="fill: #111111;" width="25" height="25" viewBox="0 0 20 20" fill="#555555"><path d="M14.95 6.46L11.41 10l3.54 3.54l-1.41 1.41L10 11.42l-3.53 3.53l-1.42-1.42L8.58 10L5.05 6.47l1.42-1.42L10 8.58l3.54-3.53z"></path></svg>
-          </button>
-        </div>
-
       </header>
 
       <main class="main-container">
-          <div class="result-container">
-            <nav class="body-nav-container">
-              <span class="home-text">Home</span>
-              <span class="slash">\</span>
-              <span class="home-text">Shop</span>
-              <span class="slash">\</span>
-              <span class="home-text">Keyboard</span>
-            </nav>
-          </div>
+        <div class="result-container">
+          <nav class="body-nav-container">
+            <span class="home-text">Home</span>
+            <span class="slash">\</span>
+            <span class="home-text">Shop</span>
+            <span class="slash">\</span>
+            <span class="home-text">Keyboard</span>
+          </nav>
+          <p class="result-showing">Showing 1–12 of 27 results</p>
+        </div>
+
+        <!-- sorting icon and select box -->
+        <div class="sort-category-container">
+          <button class="sorting-icon">
+            <svg
+              width="25"
+              height="24"
+              viewBox="0 0 25 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M25 21.6667V1.66667C25 0.75 24.25 0 23.3333 0H1.66667C0.75 0 0 0.75 0 1.66667V21.6667C0 22.5833 0.75 23.3333 1.66667 23.3333H23.3333C24.25 23.3333 25 22.5833 25 21.6667ZM8.33333 13.3333H10C10.9167 13.3333 11.6667 14.0833 11.6667 15C11.6667 15.9167 10.9167 16.6667 10 16.6667H8.33333V19.1667C8.33333 19.6333 7.96667 20 7.5 20C7.03333 20 6.66667 19.6333 6.66667 19.1667V16.6667H5C4.08333 16.6667 3.33333 15.9167 3.33333 15C3.33333 14.0833 4.08333 13.3333 5 13.3333H6.66667V4.16667C6.66667 3.7 7.03333 3.33333 7.5 3.33333C7.96667 3.33333 8.33333 3.7 8.33333 4.16667V13.3333ZM15 10H16.6667V19.1667C16.6667 19.6333 17.0333 20 17.5 20C17.9667 20 18.3333 19.6333 18.3333 19.1667V10H20C20.9167 10 21.6667 9.25 21.6667 8.33333C21.6667 7.41667 20.9167 6.66667 20 6.66667H18.3333V4.16667C18.3333 3.7 17.9667 3.33333 17.5 3.33333C17.0333 3.33333 16.6667 3.7 16.6667 4.16667V6.66667H15C14.0833 6.66667 13.3333 7.41667 13.3333 8.33333C13.3333 9.25 14.0833 10 15 10Z"
+                fill="currentColor"
+              ></path>
+            </svg>
+          </button>
+          <select name="sort" id="sorting-keyboard" class="sort-selector">
+            <option value="latest">Sort by latest</option>
+            <option value="popularity">Sort by popularity</option>
+            <option value="average">Sort by average rating</option>
+            <option value="low-to-high">Sort by price : low to high</option>
+            <option value="high-to-low">Sort by price : high to low</option>
+          </select>
+        </div>
+
+        <!-- keyboard data listiing  -->
+        <ul class="keyboard-data-container"></ul>
       </main>
     </div>
     <script src="index.js"></script>
+    <script src="fetching.js"></script>
   </body>
 </html>
-
