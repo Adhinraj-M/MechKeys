@@ -1,8 +1,10 @@
 const searchEl = document.getElementById("search-icon");
 const header = document.querySelector(".header-container");
 const sideMenuBar = document.querySelector(".side-menu-container");
-
+const sideFilterEl = document.querySelector('.advanced-sort-container')
+const keyboardOver =document.querySelector('.keyboard-sub-menu ')
 const searchModal = document.querySelector(".search-form-lap");
+const accOver = document.getElementById('accessories-sub-menu')
 
 searchEl.addEventListener("click", function () {
   const search = document.createElement("div");
@@ -43,5 +45,40 @@ const closeSideBar = () => {
 // search bar of laptop and above screen
 const openSearchModal =()=>{
   searchModal.style = "display:flex;";
+}
+
+//open the filter side bar
+const openSideFilter=()=>{
+  sideFilterEl.classList.remove('none')
+}
+
+//close the filter side bar
+const closeSideFilter = () => {
+  sideFilterEl.classList.add('none')
+};
+
+//side filter remove
+if(window.innerWidth >= 1024){
+  sideFilterEl.classList.remove('none')
+}
+
+// nav bar mouse over
+function mouseOver(){
+  keyboardOver.classList.remove('none')
+}
+
+//nav bar mouse leave
+function mouseLeave(){
+  keyboardOver.classList.add('none')
+}
+
+//nav bar mouse over
+function accMouseOver(){
+  accOver.classList.remove('none')
+}
+
+//nav bar mouse leave
+function accMouseLeave(){
+  accOver.classList.add('none')
 }
 

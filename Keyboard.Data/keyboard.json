@@ -23,13 +23,13 @@
     "rating_value": 5.0,
     "image": "https://mks.blr1.cdn.digitaloceanspaces.com/uploads/2024/02/RKH81-1-300x200.webp"
   },
-  {
+ {
     "id": 4,
-    "name": "CoolKiller CK75 Transparent Three‑Mode Mechanical Keyboard",
-    "price_usd": 0,
+    "name": "Mechkeys G87 Mechanical Keyboard",
+    "price_usd": 89.99,
     "rating": "★★★★☆",
     "rating_value": 3.5,
-    "image": "https://mks.blr1.cdn.digitaloceanspaces.com/uploads/2023/11/2-300x200.jpg"
+    "image": "https://mks.blr1.cdn.digitaloceanspaces.com/uploads/2023/02/2021818-9359-1-300x200.webp"
   },
   {
     "id": 5,
@@ -94,13 +94,5 @@
     "rating": "★★★★☆",
     "rating_value": 4.0,
     "image":"https://mks.blr1.cdn.digitaloceanspaces.com/uploads/2024/11/Aula-f87-pro-white-green-7-300x200.jpg"
-  },
-  {
-    "id": 13,
-    "name": "Mechkeys G87 Mechanical Keyboard",
-    "price_usd": 89.99,
-    "rating": "★★★★☆",
-    "rating_value": 3.5,
-    "image": "https://mks.blr1.cdn.digitaloceanspaces.com/uploads/2023/02/2021818-9359-1-300x200.webp"
   }
 ]

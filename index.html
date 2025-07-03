@@ -74,6 +74,7 @@
                 </svg>
               </button>
             </li>
+
             <li class="menu-text">contact</li>
           </ul>
         </div>
@@ -97,7 +98,11 @@
               <ul class="nav-ul">
                 <li class="menu-item">dealzone</li>
                 <li class="menu-item">pre-order</li>
-                <li class="menu-item">
+                <li
+                  class="menu-item"
+                  onmouseover="mouseOver()"
+                  onmouseleave="mouseLeave()"
+                >
                   keyboard
                   <svg
                     class="sub-menu-icon"
@@ -116,9 +121,26 @@
                     ></path>
                   </svg>
                 </li>
+
+                <!-- sub-menu-keyboard  -->
+
+                <ul class="keyboard-sub-menu none">
+                  <li class="menu-items">Full Size</li>
+                  <li class="menu-items">80%/TKL</li>
+                  <li class="menu-items">75%</li>
+                  <li class="menu-items">65%</li>
+                  <li class="menu-items">60%/COMPACT</li>
+                  <li class="menu-items">20%/MACROPAD</li>
+                  <li class="menu-items">BAREBONE</li>
+                </ul>
+
                 <li class="menu-item">mouse</li>
                 <li class="menu-item">deskmat</li>
-                <li class="menu-item">
+                <li
+                  class="menu-item"
+                  onmouseover="accMouseOver()"
+                  onmouseleave="accMouseLeave()"
+                >
                   accessories
                   <svg
                     class="sub-menu-icon"
@@ -137,6 +159,47 @@
                     ></path>
                   </svg>
                 </li>
+                <ul class="accessories-sub-menu none" id="accessories-sub-menu">
+                  <li class="menu-items">
+                    KEYBOARD
+                    <svg
+                      class="sub-menu-icon"
+                      aria-hidden="true"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="15"
+                      height="15"
+                      viewBox="0 0 15 15"
+                      style="transform: rotate(180deg)"
+                    >
+                      <rect width="15" height="15" fill="none"></rect>
+                      <path
+                        fill="currentColor"
+                        d="M14,12a1,1,0,0,1-.73-.32L7.5,5.47,1.76,11.65a1,1,0,0,1-1.4,0A1,1,0,0,1,.3,10.3l6.47-7a1,1,0,0,1,1.46,0l6.47,7a1,1,0,0,1-.06,1.4A1,1,0,0,1,14,12Z"
+                      ></path>
+                    </svg>
+                  </li>
+                  <li class="menu-items">
+                    MOUSE
+                    <svg
+                      class="sub-menu-icon"
+                      aria-hidden="true"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="15"
+                      height="15"
+                      viewBox="0 0 15 15"
+                      style="transform: rotate(180deg)"
+                    >
+                      <rect width="15" height="15" fill="none"></rect>
+                      <path
+                        fill="currentColor"
+                        d="M14,12a1,1,0,0,1-.73-.32L7.5,5.47,1.76,11.65a1,1,0,0,1-1.4,0A1,1,0,0,1,.3,10.3l6.47-7a1,1,0,0,1,1.46,0l6.47,7a1,1,0,0,1-.06,1.4A1,1,0,0,1,14,12Z"
+                      ></path>
+                    </svg>
+                  </li>
+                  <li class="menu-items">CABLES</li>
+                </ul>
                 <li class="menu-item">contact</li>
               </ul>
             </div>
@@ -271,49 +334,156 @@
       </header>
 
       <main class="main-container">
-        <div class="result-container">
-          <nav class="body-nav-container">
-            <span class="home-text">Home</span>
-            <span class="slash">\</span>
-            <span class="home-text">Shop</span>
-            <span class="slash">\</span>
-            <span class="home-text">Keyboard</span>
-          </nav>
-          <p class="result-showing">Showing 1–12 of 27 results</p>
+        <!-- Advanced Sorting sidebar  -->
+
+        <div class="advanced-sort-container none">
+          <div class="sort-close-container">
+            <button class="sort-close-btn" onclick="closeSideFilter()">
+              Close
+            </button>
+          </div>
+          <div class="filterBy-price-container">
+            <h3 class="by-price-title">Filter by price</h3>
+            <div class="price-range-container">
+              <div class="input-wrapper">
+                <div class="slider-buttons"></div>
+                <input type="range" class="first-range" />
+                <input type="range" class="second-range" />
+              </div>
+              <div class="price-box-wrapper">
+                <div class="min-price-container">
+                  <label for="minPriceInput" class="price-slider-label"
+                    >Min. Price</label
+                  >
+                  <input class="min-price-input" type="text" value="₹3,399" />
+                </div>
+                <div class="min-price-container">
+                  <label for="minPriceInput" class="price-slider-label"
+                    >Max. Price</label
+                  >
+                  <input class="min-price-input" type="text" value="₹19,999" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="filterBy-stock-container">
+            <h3 class="by-price-title">Filter by stock status</h3>
+            <ul class="checkbox-container">
+              <li class="stock">
+                <input type="checkbox" class="checkbox" value="inStock" />
+                <span class="stock-text">In stock</span>
+              </li>
+              <li class="stock" style="position: relative; bottom: 2px">
+                <input type="checkbox" class="checkbox" value="inStock" />
+                <span class="stock-text">Out of stock</span>
+              </li>
+            </ul>
+          </div>
+          <div class="filterBy-rating-container">
+            <h3 class="by-price-title">Filter by rating</h3>
+            <ul class="rating-checkbox-container">
+              <li class="rating-select">
+                <input type="checkbox" class="checkbox" name="five-rating" />
+                <span class="rating-icons">★★★★★</span>
+              </li>
+              <li class="rating-select">
+                <input type="checkbox" class="checkbox" name="five-rating" />
+                <span class="rating-icons">★★★★☆</span>
+              </li>
+              <li class="rating-select">
+                <input type="checkbox" class="checkbox" name="five-rating" />
+                <span class="rating-icons">★★★☆☆</span>
+              </li>
+            </ul>
+          </div>
+          <div class="last-option">
+            <input type="checkbox" class="checkbox" value="inStock" />
+            <span class="stock-text">8K</span>
+          </div>
         </div>
 
-        <!-- sorting icon and select box -->
-        <div class="sort-category-container">
-          <button class="sorting-icon">
-            <svg
-              width="25"
-              height="24"
-              viewBox="0 0 25 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M25 21.6667V1.66667C25 0.75 24.25 0 23.3333 0H1.66667C0.75 0 0 0.75 0 1.66667V21.6667C0 22.5833 0.75 23.3333 1.66667 23.3333H23.3333C24.25 23.3333 25 22.5833 25 21.6667ZM8.33333 13.3333H10C10.9167 13.3333 11.6667 14.0833 11.6667 15C11.6667 15.9167 10.9167 16.6667 10 16.6667H8.33333V19.1667C8.33333 19.6333 7.96667 20 7.5 20C7.03333 20 6.66667 19.6333 6.66667 19.1667V16.6667H5C4.08333 16.6667 3.33333 15.9167 3.33333 15C3.33333 14.0833 4.08333 13.3333 5 13.3333H6.66667V4.16667C6.66667 3.7 7.03333 3.33333 7.5 3.33333C7.96667 3.33333 8.33333 3.7 8.33333 4.16667V13.3333ZM15 10H16.6667V19.1667C16.6667 19.6333 17.0333 20 17.5 20C17.9667 20 18.3333 19.6333 18.3333 19.1667V10H20C20.9167 10 21.6667 9.25 21.6667 8.33333C21.6667 7.41667 20.9167 6.66667 20 6.66667H18.3333V4.16667C18.3333 3.7 17.9667 3.33333 17.5 3.33333C17.0333 3.33333 16.6667 3.7 16.6667 4.16667V6.66667H15C14.0833 6.66667 13.3333 7.41667 13.3333 8.33333C13.3333 9.25 14.0833 10 15 10Z"
-                fill="currentColor"
-              ></path>
-            </svg>
-          </button>
-          <select name="sort" id="sorting-keyboard" class="sort-selector">
-            <option value="latest">Sort by latest</option>
-            <option value="popularity">Sort by popularity</option>
-            <option value="average">Sort by average rating</option>
-            <option value="low-to-high">Sort by price : low to high</option>
-            <option value="high-to-low">Sort by price : high to low</option>
-          </select>
-        </div>
+        <div class="lap-right-content">
+          <div class="result-container">
+            <nav class="body-nav-container">
+              <span class="home-text">Home</span>
+              <span class="slash">\</span>
+              <span class="home-text">Shop</span>
+              <span class="slash">\</span>
+              <span class="home-text">Keyboard</span>
+            </nav>
+            <p class="result-showing">Showing 1–12 of 27 results</p>
+          </div>
 
-        <!-- keyboard data listiing  -->
-        <ul class="keyboard-data-container"></ul>
+          <!-- sorting icon and select box -->
+          <div class="sort-category-container">
+            <button class="sorting-icon" onclick="openSideFilter()">
+              <svg
+                width="25"
+                height="24"
+                viewBox="0 0 25 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M25 21.6667V1.66667C25 0.75 24.25 0 23.3333 0H1.66667C0.75 0 0 0.75 0 1.66667V21.6667C0 22.5833 0.75 23.3333 1.66667 23.3333H23.3333C24.25 23.3333 25 22.5833 25 21.6667ZM8.33333 13.3333H10C10.9167 13.3333 11.6667 14.0833 11.6667 15C11.6667 15.9167 10.9167 16.6667 10 16.6667H8.33333V19.1667C8.33333 19.6333 7.96667 20 7.5 20C7.03333 20 6.66667 19.6333 6.66667 19.1667V16.6667H5C4.08333 16.6667 3.33333 15.9167 3.33333 15C3.33333 14.0833 4.08333 13.3333 5 13.3333H6.66667V4.16667C6.66667 3.7 7.03333 3.33333 7.5 3.33333C7.96667 3.33333 8.33333 3.7 8.33333 4.16667V13.3333ZM15 10H16.6667V19.1667C16.6667 19.6333 17.0333 20 17.5 20C17.9667 20 18.3333 19.6333 18.3333 19.1667V10H20C20.9167 10 21.6667 9.25 21.6667 8.33333C21.6667 7.41667 20.9167 6.66667 20 6.66667H18.3333V4.16667C18.3333 3.7 17.9667 3.33333 17.5 3.33333C17.0333 3.33333 16.6667 3.7 16.6667 4.16667V6.66667H15C14.0833 6.66667 13.3333 7.41667 13.3333 8.33333C13.3333 9.25 14.0833 10 15 10Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </button>
+            <select name="sort" id="sorting-keyboard" class="sort-selector">
+              <option value="latest">Sort by latest</option>
+              <option value="popularity">Sort by popularity</option>
+              <option value="average">Sort by average rating</option>
+              <option value="low-to-high">Sort by price : low to high</option>
+              <option value="high-to-low">Sort by price : high to low</option>
+            </select>
+          </div>
+
+          <!-- keyboard data listiing  -->
+          <ul class="keyboard-data-container"></ul>
+        </div>
       </main>
+
+
+      <!-- footer section  -->
+
+
+      <footer>
+        <div class="footer-mobile">
+          <div class="section-container">
+            <ul class="first-section">
+              <li class="footer-text">About Us</li>
+              <li class="footer-text">Grow With Us</li>
+              <li class="footer-text">Our Brands</li>
+              <li class="footer-text">Careers</li>
+            </ul>
+            <ul class="first-section">
+              <li class="footer-text">Authenticity</li>
+              <li class="footer-text">Return and Cancellation</li>
+              <li class="footer-text">FAQs</li>
+              <li class="footer-text">Blogs</li>
+            </ul>
+            <ul class="first-section">
+              <li class="footer-text">Terms and Conditions</li>
+              <li class="footer-text">Privacy Policy</li>
+              <li class="footer-text">Sustainability</li>
+              <li class="footer-text">E-Waste Management</li>
+            </ul>
+          </div>
+          <div class="social-media-container">
+            <p class="connect-text">Connect With Us</p>
+            <div class="social-media-wrapper">
+              <img src="/wp-content/plugins/meckeys-blocks/meckeys-footer/src/assets/facebook.svg" alt="facebook">
+            </div>
+          </div>
+        </div>
+      </footer>
+
     </div>
     <script src="index.js"></script>
     <script src="fetching.js"></script>
   </body>
 </html>
+

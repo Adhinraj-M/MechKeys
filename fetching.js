@@ -1,7 +1,6 @@
 const selectEl = document.getElementById("sorting-keyboard");
 const ulEl = document.querySelector(".keyboard-data-container");
-console.log(selectEl.value)
-window.addEventListener('load',handleChange) //for inital loading
+window.addEventListener('load',handleChange)  //for inital loading
 selectEl.addEventListener("change", handleChange);
 
 async function handleChange() {
@@ -65,7 +64,6 @@ function highToLow(data) {
 function createList(data) {
     ulEl.innerHTML = ''    //clear previous list 
 
-
   data.forEach((data, index) => {
     const keyboarLi = document.createElement("li");
     keyboarLi.dataset.key = index;
@@ -120,3 +118,6 @@ function createList(data) {
   });
 
 }
+
+
+
