@@ -1,37 +1,42 @@
+import {filterData, updateInputs} from './filter.js'
+
 const selectEl = document.getElementById("sorting-keyboard");
 const ulEl = document.querySelector(".keyboard-data-container");
-window.addEventListener('load',handleChange)  //for inital loading
-selectEl.addEventListener("change", handleChange);
+selectEl.addEventListener("change", updateInputs);
 
-async function handleChange() {
+
+//selecting sort
+export async function handleChange(min,max) {
   const fetchedData = await dataFetch();
-
+  const filteredData = filterData(min,max,fetchedData)
   switch (selectEl.value) {
     case "latest":
-      const latest = latestKeyboard(fetchedData);
-      createList(latest);
+      const latest = latestKeyboard(filteredData);
+      createList (latest);
       break;
     case "popularity":
-      const popular = popularkeyboard(fetchedData);
-      createList(popular);
+      const popular = popularkeyboard(filteredData);
+      createList (popular);
       break;
     case "average":
-      const average = averagekeyboard(fetchedData);
+      const average = averagekeyboard(filteredData);
       createList(average);
       break;
     case "low-to-high":
-      const lowPriceFirst = lowToHigh(fetchedData);
+      const lowPriceFirst = lowToHigh(filteredData);
       createList(lowPriceFirst);
-      break;
+    break;
     case "high-to-low":
-      const highPriceFirst = highToLow(fetchedData);
+      const highPriceFirst = highToLow(filteredData);
       createList(highPriceFirst);
       break;
     default:
       console.log("Select one of the option!");
   }
 }
-async function dataFetch() {
+
+//data fetching function
+export async function dataFetch() {
   try {
     const response = await fetch("Keyboard.Data/keyboard.json");
     const data = await response.json();
@@ -61,10 +66,12 @@ function highToLow(data) {
   return data.sort((a, b) => b.price_usd - a.price_usd);
 }
 
-function createList(data) {
+
+//creating list according to the sort
+ export function createList(data) {
     ulEl.innerHTML = ''    //clear previous list 
 
-  data.forEach((data, index) => {
+    data.forEach((data, index) => {
     const keyboarLi = document.createElement("li");
     keyboarLi.dataset.key = index;
     keyboarLi.className = "keyboard-wrapper";
@@ -83,7 +90,8 @@ function createList(data) {
 
     const wishBtn = document.createElement("button");
     wishBtn.className = "wishlist-btn";
-    wishBtn.innerHTML = `<svg
+    wishBtn.innerHTML = `<svg 
+                  id="wishlist-icon"
                   style="color: white"
                   width="16"
                   height="16"
@@ -118,6 +126,5 @@ function createList(data) {
   });
 
 }
-
 
 

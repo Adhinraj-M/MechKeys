@@ -5,6 +5,7 @@ const sideFilterEl = document.querySelector('.advanced-sort-container')
 const keyboardOver =document.querySelector('.keyboard-sub-menu ')
 const searchModal = document.querySelector(".search-form-lap");
 const accOver = document.getElementById('accessories-sub-menu')
+const resetPrice =document.getElementById('reset-btn-price')
 
 searchEl.addEventListener("click", function () {
   const search = document.createElement("div");
@@ -81,4 +82,10 @@ function accMouseOver(){
 function accMouseLeave(){
   accOver.classList.add('none')
 }
+
+function displayReset(){
+  resetPrice.classList.remove('none')
+  resetPrice.classList.add('display;flex')
+}
+
 
