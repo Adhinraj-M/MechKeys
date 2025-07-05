@@ -111,7 +111,7 @@ function highToLow(data) {
 
     const nameEl = document.createElement("h2");
     nameEl.className = "keyboard-name";
-    nameEl.innerHTML = data.name;
+    nameEl.innerHTML = ` ${data.in_stock === false ? `${data.name} <span class="noStock">(Out Of Stock)</span>`:`${data.name}`}`
     keyboardInfo.appendChild(nameEl);
 
     const starDiv = document.createElement("div");

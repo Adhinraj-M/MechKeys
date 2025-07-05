@@ -854,6 +854,10 @@ footer .footer-text {
   font-size: 11px;
 }
 
+.noStock{
+  color: red;
+}
+
 @media (min-width: 768px) {
   .cart-container {
     padding: 0 10px;

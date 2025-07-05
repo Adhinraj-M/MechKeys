@@ -7,6 +7,10 @@ const minPrice = document.getElementById("minPrice");
 const maxPrice = document.getElementById("maxPrice");
 const rangeFill = document.getElementById("rangeFill");
 const resetPrice = document.getElementById("reset-btn-price");
+const instock = document.getElementById('InStockCheck')
+const outStock = document.getElementById('OutStockCheck')
+const resetStock = document.getElementById('reset-btn-stock')
+
 
 const minGap = 50;
 const maxRange = 250;
@@ -63,9 +67,28 @@ rangeMax.addEventListener("input", updateSlider);
 updateInputs();
 
 export function filterData(min, max, data) {
+
+  if(instock.checked){
+   let  inStockFilter = data.filter((item)=>{
+      return item.price_usd >= min && item.price_usd <= max && item.in_stock === true
+    })
+    return inStockFilter
+  }
+
+  if(outStock.checked){
+     let  inStockFilter = data.filter((item)=>{
+      return item.price_usd >= min && item.price_usd <= max && item.in_stock === false
+    })
+    return inStockFilter
+  }
+
+  // if()
+
   const filter = data.filter(
     (item) => item.price_usd >= min && item.price_usd <= max
   );
+
+ 
   return filter;
 }
 
@@ -82,12 +105,31 @@ resetPrice.addEventListener("click", function priceReset() {
 });
 
 
-//check box filtering 
+//check box filtering (Stock)
 
-const instock = document.getElementById('InStockCheck')
-const outStock = document.getElementById('OutStockCheck')
+instock.addEventListener('change',()=>{
+  resetStock.classList.remove('none')
+  if(instock.checked){
+    outStock.checked = false
+  }
+  updateInputs()
+})
 
-instock.addEventListener('click',()=>{
-  const filter = data.filter((item)=> item.in_stock === true)
+outStock.addEventListener('change',()=>{
+  resetStock.classList.remove('none')
+  if(outStock.checked){
+    instock.checked =false;
+  }
+  updateInputs()
+})
 
-})=
+//reset stock checkbox
+
+resetStock.addEventListener('click',function(){
+  instock.checked =false;
+  outStock.checked = false;
+  resetStock.classList.add('none')
+  updateInputs()
+
+})
+
