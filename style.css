@@ -517,6 +517,7 @@ body {
   width: 100%;
   transition: all 0.3s ease-out;
   background-color: #ffffff;
+  overflow-y: hidden;
 }
 
 .advanced-sort-container .sort-close-container {
