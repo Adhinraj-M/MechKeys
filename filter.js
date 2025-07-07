@@ -1,17 +1,22 @@
 import { handleChange } from "./fetching.js";
 
-
 const rangeMin = document.getElementById("rangeMin");
 const rangeMax = document.getElementById("rangeMax");
 const minPrice = document.getElementById("minPrice");
 const maxPrice = document.getElementById("maxPrice");
 const rangeFill = document.getElementById("rangeFill");
 const resetPrice = document.getElementById("reset-btn-price");
+const instock = document.getElementById("InStockCheck");
+const outStock = document.getElementById("OutStockCheck");
+const resetStock = document.getElementById("reset-btn-stock");
+const fiveStar=document.getElementById('five-star')
+const fourStar = document.getElementById('four-star')
+const threeStar = document.getElementById('three-star')
 
 const minGap = 50;
 const maxRange = 250;
 
-//filter slider 
+//filter slider
 
 export function updateSlider(e) {
   let minVal = parseInt(rangeMin.value);
@@ -63,13 +68,188 @@ rangeMax.addEventListener("input", updateSlider);
 updateInputs();
 
 export function filterData(min, max, data) {
+  if (instock.checked) {
+
+    switch (rating) {
+    case rating === fiveStar.checked:
+      filteredByRating = data.filter((item) => {
+        if (instock.checked) {
+          return (
+            item.price_usd >= min &&
+            item.price_usd <= max &&
+            item.rating_value === 5 &&
+            item.in_stock === true
+          );
+        }else {
+          return (
+            item.price_usd >= min &&
+            item.price_usd <= max &&
+            item.in_stock === true
+          );
+        }
+      });
+
+      return filteredByRating;
+
+    case rating === fourStar.checked:
+      filteredByRating = data.filter((item) => {
+        if (instock.checked) {
+          return (
+            item.price_usd >= min &&
+            item.price_usd <= max &&
+            item.rating_value >= 4 &&
+            item.in_stock === true
+          );
+        } else {
+          return (
+            item.price_usd >= min &&
+            item.price_usd <= max &&
+            item.in_stock === true
+
+          );
+        }
+      });
+
+      return filteredByRating;
+
+    case rating === threeStar.checked:
+      filteredByRating = data.filter((item) => {
+        if (instock.checked) {
+          return (
+            item.price_usd >= min &&
+            item.price_usd <= max &&
+            item.rating_value >= 3 &&
+            item.in_stock === true
+          );
+        } else if (outStock.checked) {
+          return (
+            item.price_usd >= min &&
+            item.price_usd <= max &&
+            item.rating_value >= 3 &&
+            item.in_stock === false
+          );
+        } else {
+          return (
+            item.price_usd >= min &&
+            item.price_usd <= max &&
+            item.rating_value >= 3
+          );
+        }
+      });
+  }
+
+
+    let inStockFilter = data.filter((item) => {
+      return (
+        item.price_usd >= min && item.price_usd <= max && item.in_stock === true
+      );
+    });
+    return inStockFilter;
+  }
+
+  if (outStock.checked) {
+    let inStockFilter = data.filter((item) => {
+      return (
+        item.price_usd >= min &&
+        item.price_usd <= max &&
+        item.in_stock === false
+      );
+    });
+    return inStockFilter;
+  }
+
+  let filteredByRating;
+
+  switch (rating) {
+    case rating === fiveStar.checked:
+      filteredByRating = data.filter((item) => {
+        if (instock.checked) {
+          return (
+            item.price_usd >= min &&
+            item.price_usd <= max &&
+            item.rating_value === 5 &&
+            item.in_stock === true
+          );
+        } else if (outStock.checked) {
+          return (
+            item.price_usd >= min &&
+            item.price_usd <= max &&
+            item.rating_value === 5 &&
+            item.in_stock === false
+          );
+        } else {
+          return (
+            item.price_usd >= min &&
+            item.price_usd <= max &&
+            item.rating_value === 5
+          );
+        }
+      });
+
+      return filteredByRating;
+
+    case rating === fourStar.checked:
+      filteredByRating = data.filter((item) => {
+        if (instock.checked) {
+          return (
+            item.price_usd >= min &&
+            item.price_usd <= max &&
+            item.rating_value >= 4 &&
+            item.in_stock === true
+          );
+        } else if (outStock.checked) {
+          return (
+            item.price_usd >= min &&
+            item.price_usd <= max &&
+            item.rating_value >= 4 &&
+            item.in_stock === false
+          );
+        } else {
+          return (
+            item.price_usd >= min &&
+            item.price_usd <= max &&
+            item.rating_value >= 4
+          );
+        }
+      });
+
+      return filteredByRating;
+
+    case rating === threeStar.checked:
+      filteredByRating = data.filter((item) => {
+        if (instock.checked) {
+          return (
+            item.price_usd >= min &&
+            item.price_usd <= max &&
+            item.rating_value >= 3 &&
+            item.in_stock === true
+          );
+        } else if (outStock.checked) {
+          return (
+            item.price_usd >= min &&
+            item.price_usd <= max &&
+            item.rating_value >= 3 &&
+            item.in_stock === false
+          );
+        } else {
+          return (
+            item.price_usd >= min &&
+            item.price_usd <= max &&
+            item.rating_value >= 3
+          );
+        }
+      });
+  }
+
+
   const filter = data.filter(
     (item) => item.price_usd >= min && item.price_usd <= max
   );
+
   return filter;
 }
 
-//reset the slider 
+//reset the slider
 resetPrice.addEventListener("click", function priceReset() {
   rangeMax.value = 250;
   rangeMin.value = 50;
@@ -78,16 +258,68 @@ resetPrice.addEventListener("click", function priceReset() {
   rangeFill.style.left = "0%";
   rangeFill.style.width = "100%";
   handleChange(50, 250);
-  resetPrice.classList.add('none')
+  resetPrice.classList.add("none");
 });
 
+//check box filtering (Stock)
 
-//check box filtering 
+instock.addEventListener("change", () => {
+  resetStock.classList.remove("none");
+  if (instock.checked) {
+    outStock.checked = false;
+  }
+  updateInputs();
+});
 
-const instock = document.getElementById('InStockCheck')
-const outStock = document.getElementById('OutStockCheck')
+outStock.addEventListener("change", () => {
+  resetStock.classList.remove("none");
+  if (outStock.checked) {
+    instock.checked = false;
+  }
+  updateInputs();
+});
 
-instock.addEventListener('click',()=>{
-  const filter = data.filter((item)=> item.in_stock === true)
+//reset stock checkbox
 
-})=
+resetStock.addEventListener("click", function () {
+  instock.checked = false;
+  outStock.checked = false;
+  resetStock.classList.add("none");
+  updateInputs();
+});
+
+//rating star wise filtering
+
+let rating;
+
+fiveStar.addEventListener('change',function (){
+  if(fiveStar.checked){
+    rating = fiveStar.checked
+    fourStar.checked = false;
+    threeStar.checked = false;
+  }
+     updateInputs()
+  
+ 
+})
+
+fourStar.addEventListener('change',function(){
+  if(fourStar.checked){
+    rating = fourStar.checked
+    fiveStar.checked = false;
+    threeStar.checked = false;
+  }
+     updateInputs()
+
+})
+
+
+threeStar.addEventListener('change',function(){
+  if(threeStar.checked){
+    rating = threeStar.checked
+    fiveStar.checked = false;
+    fourStar.checked = false
+  }
+     updateInputs()
+
+})

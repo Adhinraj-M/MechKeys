@@ -517,6 +517,7 @@ body {
   width: 100%;
   transition: all 0.3s ease-out;
   background-color: #ffffff;
+  overflow-y: hidden;
 }
 
 .advanced-sort-container .sort-close-container {
@@ -852,6 +853,10 @@ footer .footer-text {
   right: 46px;
   cursor: pointer;
   font-size: 11px;
+}
+
+.noStock{
+  color: red;
 }
 
 @media (min-width: 768px) {
