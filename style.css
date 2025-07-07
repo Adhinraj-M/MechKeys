@@ -1252,7 +1252,7 @@ footer .footer-text {
 
 .reset-btn{
  
-  position: absolute;
+  position: relative;
   left: 216px;
 }
 }
