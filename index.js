@@ -35,12 +35,12 @@ searchEl.addEventListener("click", function () {
 
 //open side menu bar under tablet
 const opneSideMenu = () => {
-  sideMenuBar.classList.remove('none')
-  sideMenuBar.style = "display:flex;";
+  sideMenuBar.classList.add('active')
 };
 // close the side menu bar under tablet
 const closeSideBar = () => {
-  sideMenuBar.style = 'display:none'
+  sideMenuBar.classList.remove('active')
+
 };
 
 // search bar of laptop and above screen
@@ -50,12 +50,12 @@ const openSearchModal =()=>{
 
 //open the filter side bar
 const openSideFilter=()=>{
-  sideFilterEl.classList.remove('none')
+  sideFilterEl.classList.add('active')
 }
 
 //close the filter side bar
 const closeSideFilter = () => {
-  sideFilterEl.classList.add('none')
+  sideFilterEl.classList.remove('active')
 };
 
 //side filter remove

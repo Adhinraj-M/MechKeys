@@ -9,9 +9,10 @@ const resetPrice = document.getElementById("reset-btn-price");
 const instock = document.getElementById("InStockCheck");
 const outStock = document.getElementById("OutStockCheck");
 const resetStock = document.getElementById("reset-btn-stock");
-const fiveStar=document.getElementById('five-star')
-const fourStar = document.getElementById('four-star')
-const threeStar = document.getElementById('three-star')
+const fiveStar = document.getElementById("five-star");
+const fourStar = document.getElementById("four-star");
+const threeStar = document.getElementById("three-star");
+const resetRating = document.getElementById("reset-btn-star");
 
 const minGap = 50;
 const maxRange = 250;
@@ -40,7 +41,7 @@ export function updateSlider(e) {
 
   rangeFill.style.left = percentMin + "%";
   rangeFill.style.width = percentMax - percentMin + "%";
-
+  resetPrice.classList.remove("none");
   handleChange(minVal, maxVal);
 }
 
@@ -69,97 +70,100 @@ updateInputs();
 
 export function filterData(min, max, data) {
   if (instock.checked) {
-
+    let filteredByRating;
     switch (rating) {
-    case rating === fiveStar.checked:
-      filteredByRating = data.filter((item) => {
-        if (instock.checked) {
+      case rating === fiveStar.checked:
+        filteredByRating = data.filter((item) => {
           return (
             item.price_usd >= min &&
             item.price_usd <= max &&
             item.rating_value === 5 &&
             item.in_stock === true
           );
-        }else {
-          return (
-            item.price_usd >= min &&
-            item.price_usd <= max &&
-            item.in_stock === true
-          );
-        }
-      });
+        });
+        return filteredByRating;
 
-      return filteredByRating;
-
-    case rating === fourStar.checked:
-      filteredByRating = data.filter((item) => {
-        if (instock.checked) {
+      case rating === fourStar.checked:
+        filteredByRating = data.filter((item) => {
           return (
             item.price_usd >= min &&
             item.price_usd <= max &&
             item.rating_value >= 4 &&
             item.in_stock === true
           );
-        } else {
-          return (
-            item.price_usd >= min &&
-            item.price_usd <= max &&
-            item.in_stock === true
-
-          );
-        }
-      });
-
-      return filteredByRating;
-
-    case rating === threeStar.checked:
-      filteredByRating = data.filter((item) => {
-        if (instock.checked) {
+        });
+        return filteredByRating;
+      case rating === threeStar.checked:
+        filteredByRating = data.filter((item) => {
           return (
             item.price_usd >= min &&
             item.price_usd <= max &&
             item.rating_value >= 3 &&
             item.in_stock === true
           );
-        } else if (outStock.checked) {
+        });
+        return filteredByRating;
+      default:
+        let inStockFilter = data.filter((item) => {
           return (
             item.price_usd >= min &&
             item.price_usd <= max &&
-            item.rating_value >= 3 &&
-            item.in_stock === false
+            item.in_stock === true
           );
-        } else {
-          return (
-            item.price_usd >= min &&
-            item.price_usd <= max &&
-            item.rating_value >= 3
-          );
-        }
-      });
-  }
-
-
-    let inStockFilter = data.filter((item) => {
-      return (
-        item.price_usd >= min && item.price_usd <= max && item.in_stock === true
-      );
-    });
-    return inStockFilter;
+        });
+        return inStockFilter;
+    }
   }
 
   if (outStock.checked) {
-    let inStockFilter = data.filter((item) => {
-      return (
-        item.price_usd >= min &&
-        item.price_usd <= max &&
-        item.in_stock === false
-      );
-    });
-    return inStockFilter;
+    let filteredByRating;
+    switch (rating) {
+      case rating === fiveStar.checked:
+        filteredByRating = data.filter((item) => {
+          return (
+            item.price_usd >= item.price_usd <= max &&
+            item.rating_value === 5 &&
+            item.in_stock === false
+          );
+        });
+
+        return filteredByRating;
+
+      case rating === fourStar.checked:
+        filteredByRating = data.filter((item) => {
+          return (
+            item.price_usd >= item.price_usd <= max &&
+            item.rating_value >= 4 &&
+            item.in_stock === false
+          );
+        });
+        console.log(filteredByRating);
+
+        return filteredByRating;
+      case rating === threeStar.checked:
+        filteredByRating = data.filter((item) => {
+          return (
+            item.price_usd >= item.price_usd <= max &&
+            item.rating_value >= 3 &&
+            item.instock === false
+          );
+        });
+        return filteredByRating;
+      default:
+        let inStockFilter = data.filter((item) => {
+          return (
+            item.price_usd >= min &&
+            item.price_usd <= max &&
+            item.in_stock === false
+          );
+        });
+        return inStockFilter;
+    }
   }
 
   let filteredByRating;
 
+  //Rating by sort logic
   switch (rating) {
     case rating === fiveStar.checked:
       filteredByRating = data.filter((item) => {
@@ -239,8 +243,8 @@ export function filterData(min, max, data) {
           );
         }
       });
+      return filteredByRating;
   }
-
 
   const filter = data.filter(
     (item) => item.price_usd >= min && item.price_usd <= max
@@ -292,34 +296,40 @@ resetStock.addEventListener("click", function () {
 
 let rating;
 
-fiveStar.addEventListener('change',function (){
-  if(fiveStar.checked){
-    rating = fiveStar.checked
+fiveStar.addEventListener("change", function () {
+  if (fiveStar.checked) {
+    rating = fiveStar.checked;
     fourStar.checked = false;
     threeStar.checked = false;
   }
-     updateInputs()
-  
- 
-})
+  updateInputs();
+  resetRating.classList.remove("none");
+});
 
-fourStar.addEventListener('change',function(){
-  if(fourStar.checked){
-    rating = fourStar.checked
+fourStar.addEventListener("change", function () {
+  if (fourStar.checked) {
+    rating = fourStar.checked;
     fiveStar.checked = false;
     threeStar.checked = false;
   }
-     updateInputs()
+  updateInputs();
+  resetRating.classList.remove("none");
+});
 
-})
-
-
-threeStar.addEventListener('change',function(){
-  if(threeStar.checked){
-    rating = threeStar.checked
+threeStar.addEventListener("change", function () {
+  if (threeStar.checked) {
+    rating = threeStar.checked;
     fiveStar.checked = false;
-    fourStar.checked = false
+    fourStar.checked = false;
   }
-     updateInputs()
+  updateInputs();
+  resetRating.classList.remove("none");
+});
 
-})
+resetRating.addEventListener("click", () => {
+  fiveStar.checked = false;
+  fourStar.checked = false;
+  threeStar.checked = false;
+  resetRating.classList.add("none");
+  updateInputs();
+});

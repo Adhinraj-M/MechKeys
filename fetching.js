@@ -1,22 +1,29 @@
-import {filterData, updateInputs} from './filter.js'
+import { filterData, updateInputs } from "./filter.js";
 
 const selectEl = document.getElementById("sorting-keyboard");
 const ulEl = document.querySelector(".keyboard-data-container");
 selectEl.addEventListener("change", updateInputs);
-
+const noDataContainerEl = document.querySelector(".no-data-container");
 
 //selecting sort
-export async function handleChange(min,max) {
+export async function handleChange(min, max) {
   const fetchedData = await dataFetch();
-  const filteredData = filterData(min,max,fetchedData)
+  const filteredData = filterData(min, max, fetchedData);
+  if (filteredData.length == 0) {
+    noDataFound();
+  }
+  if (filteredData.length >= 1) {
+    noDataContainerEl.style = "display:none";
+  }
+
   switch (selectEl.value) {
     case "latest":
       const latest = latestKeyboard(filteredData);
-      createList (latest);
+      createList(latest);
       break;
     case "popularity":
       const popular = popularkeyboard(filteredData);
-      createList (popular);
+      createList(popular);
       break;
     case "average":
       const average = averagekeyboard(filteredData);
@@ -25,7 +32,7 @@ export async function handleChange(min,max) {
     case "low-to-high":
       const lowPriceFirst = lowToHigh(filteredData);
       createList(lowPriceFirst);
-    break;
+      break;
     case "high-to-low":
       const highPriceFirst = highToLow(filteredData);
       createList(highPriceFirst);
@@ -66,12 +73,11 @@ function highToLow(data) {
   return data.sort((a, b) => b.price_usd - a.price_usd);
 }
 
-
 //creating list according to the sort
- export function createList(data) {
-    ulEl.innerHTML = ''    //clear previous list 
+export function createList(data) {
+  ulEl.innerHTML = ""; //clear previous list
 
-    data.forEach((data, index) => {
+  data.forEach((data, index) => {
     const keyboarLi = document.createElement("li");
     keyboarLi.dataset.key = index;
     keyboarLi.className = "keyboard-wrapper";
@@ -111,7 +117,11 @@ function highToLow(data) {
 
     const nameEl = document.createElement("h2");
     nameEl.className = "keyboard-name";
-    nameEl.innerHTML = ` ${data.in_stock === false ? `${data.name} <span class="noStock">(Out Of Stock)</span>`:`${data.name}`}`
+    nameEl.innerHTML = ` ${
+      data.in_stock === false
+        ? `${data.name} <span class="noStock">(Out Of Stock)</span>`
+        : `${data.name}`
+    }`;
     keyboardInfo.appendChild(nameEl);
 
     const starDiv = document.createElement("div");
@@ -124,7 +134,18 @@ function highToLow(data) {
     price.innerHTML = `$ ${data.price_usd}`;
     keyboardInfo.appendChild(price);
   });
-
 }
 
+export function noDataFound() {
+  const existing = document.querySelector(".no-data");
 
+  if (existing) {
+    existing.remove("no-data");
+  }
+  noDataContainerEl.style = "display:flex";
+  noDataContainerEl.classList.remove("none");
+  const noDataEl = document.createElement("h1");
+  noDataEl.textContent = "No Data Found!";
+  noDataEl.className = "no-data";
+  noDataContainerEl.appendChild(noDataEl);
+}
