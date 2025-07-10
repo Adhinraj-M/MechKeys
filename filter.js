@@ -68,50 +68,25 @@ rangeMax.addEventListener("input", updateSlider);
 
 updateInputs();
 
+//data filtering by conditions
+
 export function filterData(min, max, data) {
   if (instock.checked) {
     let filteredByRating;
     switch (rating) {
       case rating === fiveStar.checked:
-        filteredByRating = data.filter((item) => {
-          return (
-            item.price_usd >= min &&
-            item.price_usd <= max &&
-            item.rating_value === 5 &&
-            item.in_stock === true
-          );
-        });
-        return filteredByRating;
-
+         filteredByRating =inStockByRating(5,data,min, max)
+        return filteredByRating
       case rating === fourStar.checked:
-        filteredByRating = data.filter((item) => {
-          return (
-            item.price_usd >= min &&
-            item.price_usd <= max &&
-            item.rating_value >= 4 &&
-            item.in_stock === true
-          );
-        });
-        return filteredByRating;
+        filteredByRating =inStockByRating(4,data,min, max)
+        return filteredByRating
       case rating === threeStar.checked:
-        filteredByRating = data.filter((item) => {
-          return (
-            item.price_usd >= min &&
-            item.price_usd <= max &&
-            item.rating_value >= 3 &&
-            item.in_stock === true
-          );
-        });
-        return filteredByRating;
+         filteredByRating =inStockByRating(3,data,min, max)
+        return filteredByRating
       default:
-        let inStockFilter = data.filter((item) => {
-          return (
-            item.price_usd >= min &&
-            item.price_usd <= max &&
-            item.in_stock === true
-          );
-        });
-        return inStockFilter;
+        filteredByRating =  filterByStock(data,min,max)
+    
+       return filteredByRating
     }
   }
 
@@ -119,45 +94,17 @@ export function filterData(min, max, data) {
     let filteredByRating;
     switch (rating) {
       case rating === fiveStar.checked:
-        filteredByRating = data.filter((item) => {
-          return (
-            item.price_usd >= item.price_usd <= max &&
-            item.rating_value === 5 &&
-            item.in_stock === false
-          );
-        });
-
-        return filteredByRating;
-
+      filteredByRating=  outStockByRting(5,data,min,max)
+      return filteredByRating
       case rating === fourStar.checked:
-        filteredByRating = data.filter((item) => {
-          return (
-            item.price_usd >= item.price_usd <= max &&
-            item.rating_value >= 4 &&
-            item.in_stock === false
-          );
-        });
-        console.log(filteredByRating);
-
-        return filteredByRating;
+        filteredByRating=  outStockByRting(4,data,min,max)
+      return filteredByRating
       case rating === threeStar.checked:
-        filteredByRating = data.filter((item) => {
-          return (
-            item.price_usd >= item.price_usd <= max &&
-            item.rating_value >= 3 &&
-            item.instock === false
-          );
-        });
-        return filteredByRating;
+        filteredByRating=  outStockByRting(3,data,min,max)
+      return filteredByRating
       default:
-        let inStockFilter = data.filter((item) => {
-          return (
-            item.price_usd >= min &&
-            item.price_usd <= max &&
-            item.in_stock === false
-          );
-        });
-        return inStockFilter;
+        filteredByRating =  filterByStock(data,min,max)
+       return filteredByRating
     }
   }
 
@@ -166,92 +113,103 @@ export function filterData(min, max, data) {
   //Rating by sort logic
   switch (rating) {
     case rating === fiveStar.checked:
-      filteredByRating = data.filter((item) => {
         if (instock.checked) {
-          return (
-            item.price_usd >= min &&
-            item.price_usd <= max &&
-            item.rating_value === 5 &&
-            item.in_stock === true
-          );
+          filteredByRating=  inStockByRating(5,data,min,max)
+         return filteredByRating
         } else if (outStock.checked) {
-          return (
-            item.price_usd >= min &&
-            item.price_usd <= max &&
-            item.rating_value === 5 &&
-            item.in_stock === false
-          );
+         filteredByRating= outStockByRting(5,data,min,max)
+          return filteredByRating
         } else {
-          return (
-            item.price_usd >= min &&
-            item.price_usd <= max &&
-            item.rating_value === 5
-          );
+           let ratingData = filterRating(5,data,min,max)
+          return ratingData
         }
-      });
-
-      return filteredByRating;
 
     case rating === fourStar.checked:
-      filteredByRating = data.filter((item) => {
         if (instock.checked) {
-          return (
-            item.price_usd >= min &&
-            item.price_usd <= max &&
-            item.rating_value >= 4 &&
-            item.in_stock === true
-          );
+           filteredByRating=  inStockByRating(4,data,min,max)
+          return filteredByRating
         } else if (outStock.checked) {
-          return (
-            item.price_usd >= min &&
-            item.price_usd <= max &&
-            item.rating_value >= 4 &&
-            item.in_stock === false
-          );
+           filteredByRating=  outStockByRting(4,data,min,max)
+          return filteredByRating
         } else {
-          return (
-            item.price_usd >= min &&
-            item.price_usd <= max &&
-            item.rating_value >= 4
-          );
+           let ratingData = filterRating(4,data,min,max)
+           return ratingData
         }
-      });
-
-      return filteredByRating;
-
+    
     case rating === threeStar.checked:
-      filteredByRating = data.filter((item) => {
+     
         if (instock.checked) {
-          return (
-            item.price_usd >= min &&
-            item.price_usd <= max &&
-            item.rating_value >= 3 &&
-            item.in_stock === true
-          );
+            filteredByRating=  inStockByRating(3,data,min,max)
+          return filteredByRating
         } else if (outStock.checked) {
-          return (
-            item.price_usd >= min &&
-            item.price_usd <= max &&
-            item.rating_value >= 3 &&
-            item.in_stock === false
-          );
+           filteredByRating=  outStockByRting(3,data,min,max)
+          return filteredByRating
         } else {
-          return (
-            item.price_usd >= min &&
-            item.price_usd <= max &&
-            item.rating_value >= 3
-          );
+          let ratingData = filterRating(3,data,min,max)
+          return ratingData
         }
-      });
-      return filteredByRating;
   }
 
+  //  price range filtering 
   const filter = data.filter(
     (item) => item.price_usd >= min && item.price_usd <= max
   );
 
   return filter;
 }
+
+//filter bY rating only 
+function filterRating(star,data,min,max){
+  let filterByRating = data.filter((item)=>{
+   return item.price_usd >= min && item.price_usd <= max && item.rating_value >= star
+  })
+
+  return filterByRating
+}
+
+//filter by stock only
+function filterByStock(data, min, max) {
+  if (instock.checked) {
+    let filterByStock = data.filter((item) => {
+     return  item.price_usd >= min && item.price_usd <= max && item.in_stock === true;
+    });
+    return filterByStock;
+  }
+
+  if (outStock.checked) {
+    let filterByStock = data.filter((item) => {
+     return item.price_usd >= min && item.price_usd <= max && item.in_stock === false;
+    });
+    return filterByStock;
+  }
+}
+
+//instock filtering with the rating
+function inStockByRating(star,data,min, max){
+  let filteredByRating = data.filter((item) => {
+          return (
+            item.price_usd >= min && item.price_usd <= max &&
+            item.rating_value >= star &&
+            item.in_stock === true
+          );
+        });
+        return filteredByRating;
+}
+
+//out of stock filtering with the rating
+function outStockByRting(star,data,min,max){
+ let filteredByRating = data.filter((item) => {
+          return (
+            item.price_usd >=min && item.price_usd <= max &&
+            item.rating_value >= star &&
+            item.in_stock === false
+          );
+        });
+
+        return filteredByRating;
+}
+
+
 
 //reset the slider
 resetPrice.addEventListener("click", function priceReset() {
@@ -333,3 +291,5 @@ resetRating.addEventListener("click", () => {
   resetRating.classList.add("none");
   updateInputs();
 });
+
+
