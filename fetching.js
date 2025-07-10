@@ -5,6 +5,7 @@ const ulEl = document.querySelector(".keyboard-data-container");
 selectEl.addEventListener("change", updateInputs);
 const noDataContainerEl = document.querySelector(".no-data-container");
 
+
 //selecting sort
 export async function handleChange(min, max) {
   const fetchedData = await dataFetch();
@@ -149,3 +150,5 @@ export function noDataFound() {
   noDataEl.className = "no-data";
   noDataContainerEl.appendChild(noDataEl);
 }
+
+
